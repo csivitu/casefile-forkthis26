@@ -35,13 +35,11 @@ export default function EvidenceScreen() {
     const matchTitle = e.title.toLowerCase().includes(q);
     const matchDesc = e.description.toLowerCase().includes(q);
     const matchId = e.id.toLowerCase().includes(q);
-    const matchLocation = (location?.name ?? '').includes(q);
+    const matchLocation = (location?.name ?? '').toLowerCase().includes(q);
 
     const matchF =
-      filter === 'All' ||
-      (filter === 'Digital' ? e.type === 'Security Record' : e.type === filter);
-
-    return matchTitle || matchDesc || matchId || matchLocation && matchF;
+      filter === 'All' || e.type === filter;
+    return (matchTitle || matchDesc || matchId || matchLocation) && matchF;
   });
 
   function renderItem({ item, index }: { item: Evidence; index: number }) {
