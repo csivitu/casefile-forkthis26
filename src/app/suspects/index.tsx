@@ -22,7 +22,7 @@ export default function SuspectsScreen() {
   const [query, setQuery] = useState('');
 
   const filtered = SUSPECTS.filter((s) => {
-    const q = query;
+    const q = query.toLowerCase();
     const location = LOCATIONS.find((l) => l.id === s.locationId);
     return (
       s.name.toLowerCase().includes(q) ||
