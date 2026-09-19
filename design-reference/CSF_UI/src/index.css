@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-parchment: #E8DCC4;
+  --color-paper: #F3E9D2;
+  --color-walnut: #4A3024;
+  --color-leather: #76543C;
+  --color-antique: #A67C52;
+  --color-ink: #2B211B;
+  --color-faded: #6B5A4A;
+  --color-divider: #C5B394;
+  --color-olive: #5F7048;
+  --color-brick: #8A4538;
+
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #E8DCC4;
+  color: #2B211B;
+}
+
+@keyframes screenFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes screenSlideIn {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes screenSlideBack {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.anim-fade {
+  animation: screenFadeIn 0.18s ease-out both;
+}
+
+.anim-slide-in {
+  animation: screenSlideIn 0.2s ease-out both;
+}
+
+.anim-slide-back {
+  animation: screenSlideBack 0.2s ease-out both;
+}

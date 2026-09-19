@@ -1,0 +1,10 @@
+{
+  "description": "Streamline your detective work with a professional investigation app that organizes suspects, evidence, and timelines for efficient case management.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
