@@ -69,7 +69,7 @@ export default function InvestigationScreen() {
   const addNote = useCallback((note: Note) => {
     const updated = [...notes, note];
     setNotes(updated);
-  }, []);
+  }, [notes]);
 
   const updateNote = useCallback((id: string, text: string) => {
     const now = new Date().toISOString();
@@ -77,12 +77,12 @@ export default function InvestigationScreen() {
       n.id === id ? { ...n, text, updatedAt: now } : n
     );
     setNotes(updated);
-  }, []);
+  }, [notes]);
 
   const deleteNote = useCallback((id: string) => {
     const updated = notes.filter((n) => n.id !== id);
     setNotes(updated);
-  }, []);
+  }, [notes]);
 
   function handleAddNote() {
     if (!newNoteText.trim()) return;
@@ -115,6 +115,12 @@ export default function InvestigationScreen() {
   }
 
   function handleDeleteNote(id: string) {
+    if (Platform.OS === 'web') {
+      if(window.confirm('Delete this note?')) {
+        deleteNote(id);
+      }
+      return;
+    }
     Alert.alert(
       'Delete Note',
       'Are you sure you want to delete this note?',
