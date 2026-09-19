@@ -99,7 +99,7 @@ export const SUSPECTS: Suspect[] = [
       'Maintenance request logged at 01:30 supports Stone\'s account. However, the storage room is adjacent to the prototype vault. No independent witness.',
     locationId: 'L03',
     // Dual-swab sample telemetry: E11 indexed for interior & exterior handle comparison
-    evidenceIds: ['E10', 'E11', 'E11'],
+    evidenceIds: ['E10', 'E11'],
     eventIds: ['T02', 'T05'],
   },
   {
