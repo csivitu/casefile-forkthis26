@@ -85,7 +85,7 @@ export const SUSPECTS: Suspect[] = [
       "Cole's access card was used at the security office terminal from 02:05 to 02:28. Logs were accessed, but the specific files reviewed are unconfirmed.",
     locationId: 'L02',
     // Note: E12 (Deleted Access Report) is server-side terminal telemetry, not direct physical evidence.
-    evidenceIds: ['E08', 'E09'],
+    evidenceIds: ['E08', 'E09', 'E12'],
     eventIds: ['T04', 'T05'],
   },
   {
