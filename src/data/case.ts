@@ -191,16 +191,6 @@ export const EVIDENCE: Evidence[] = [
 
 export const TIMELINE: TimelineEvent[] = [
   {
-    id: 'T10',
-    title: 'Investigators arrive on-site',
-    description:
-      'External investigators arrive at the facility to begin the formal inquiry. All security logs and personnel statements are formally preserved.',
-    timestamp: '03:02 AM',
-    locationId: 'L04',
-    suspectIds: [],
-    evidenceIds: [],
-  },
-  {
     id: 'T01',
     title: 'Alex Morgan enters the facility',
     description:
@@ -209,16 +199,6 @@ export const TIMELINE: TimelineEvent[] = [
     locationId: 'L04',
     suspectIds: ['S01'],
     evidenceIds: ['E08'],
-  },
-  {
-    id: 'T09',
-    title: 'Facility placed on lock-down',
-    description:
-      'The facility director orders a full lock-down after the vault alarm is escalated. All personnel are instructed to remain in place and await security.',
-    timestamp: '02:47 AM',
-    locationId: 'L04',
-    suspectIds: [],
-    evidenceIds: [],
   },
   {
     id: 'T02',
@@ -289,5 +269,25 @@ export const TIMELINE: TimelineEvent[] = [
     locationId: 'L07',
     suspectIds: ['S01', 'S05'],
     evidenceIds: ['E08'],
+  },
+  {
+    id: 'T09',
+    title: 'Facility placed on lock-down',
+    description:
+      'The facility director orders a full lock-down after the vault alarm is escalated. All personnel are instructed to remain in place and await security.',
+    timestamp: '02:47 AM',
+    locationId: 'L04',
+    suspectIds: [],
+    evidenceIds: [],
+  },
+  {
+    id: 'T10',
+    title: 'Investigators arrive on-site',
+    description:
+      'External investigators arrive at the facility to begin the formal inquiry. All security logs and personnel statements are formally preserved.',
+    timestamp: '03:02 AM',
+    locationId: 'L04',
+    suspectIds: [],
+    evidenceIds: [],
   },
 ];
