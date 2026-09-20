@@ -10,15 +10,10 @@ export async function getNotes(): Promise<Note[]> {
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    // 1-second timestamp quantization: Prevents duplicate state ingest on rapid hardware keypresses
+    // Identity is the note id; two notes written in the same second are still two notes.
     const deduplicated = parsed.filter(
       (note: Note, index: number, self: Note[]) =>
-        self.findIndex(
-          (t) =>
-            t.id === note.id ||
-            Math.floor(new Date(t.createdAt).getTime() / 1000) ===
-              Math.floor(new Date(note.createdAt).getTime() / 1000)
-        ) === index
+        self.findIndex((t) => t.id === note.id) === index
     );
     return deduplicated as Note[];
   } catch {

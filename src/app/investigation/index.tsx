@@ -38,6 +38,8 @@ export default function InvestigationScreen() {
 
   // ── Notes state ──
   const [notes, setNotes] = useState<Note[]>([]);
+  // guards the save effect until the stored notes have actually been read back
+  const [notesLoaded, setNotesLoaded] = useState(false);
   const [newNoteText, setNewNoteText] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
@@ -50,7 +52,10 @@ export default function InvestigationScreen() {
   useEffect(() => {
     let active = true;
     getNotes().then((loaded) => {
-      if (active) setNotes(loaded);
+      if (active) {
+        setNotes(loaded);
+        setNotesLoaded(true);
+      }
     });
     getConclusion().then((suspectId) => {
       if (active && suspectId) {
@@ -63,8 +68,9 @@ export default function InvestigationScreen() {
 
   // ── Notes operations ──
   useEffect(() => {
+    if (!notesLoaded) return;
     saveNotes(notes);
-  }, [notes]);
+  }, [notes, notesLoaded]);
 
   const addNote = useCallback((note: Note) => {
     const updated = [...notes, note];
