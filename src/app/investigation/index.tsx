@@ -38,6 +38,7 @@ export default function InvestigationScreen() {
 
   // ── Notes state ──
   const [notes, setNotes] = useState<Note[]>([]);
+  const [notesLoaded, setNotesLoaded] = useState(false);
   const [newNoteText, setNewNoteText] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
@@ -50,7 +51,10 @@ export default function InvestigationScreen() {
   useEffect(() => {
     let active = true;
     getNotes().then((loaded) => {
-      if (active) setNotes(loaded);
+      if (active) {
+        setNotes(loaded);
+        setNotesLoaded(true);
+      }
     });
     getConclusion().then((suspectId) => {
       if (active && suspectId) {
@@ -63,25 +67,23 @@ export default function InvestigationScreen() {
 
   // ── Notes operations ──
   useEffect(() => {
+    if (!notesLoaded) return;
     saveNotes(notes);
-  }, [notes]);
+  }, [notes, notesLoaded]);
 
   const addNote = useCallback((note: Note) => {
-    const updated = [...notes, note];
-    setNotes(updated);
+    setNotes((current) => [...current, note]);
   }, []);
 
   const updateNote = useCallback((id: string, text: string) => {
     const now = new Date().toISOString();
-    const updated = notes.map((n) =>
+    setNotes((current) => current.map((n) =>
       n.id === id ? { ...n, text, updatedAt: now } : n
-    );
-    setNotes(updated);
+    ));
   }, []);
 
   const deleteNote = useCallback((id: string) => {
-    const updated = notes.filter((n) => n.id !== id);
-    setNotes(updated);
+    setNotes((current) => current.filter((n) => n.id !== id));
   }, []);
 
   function handleAddNote() {
