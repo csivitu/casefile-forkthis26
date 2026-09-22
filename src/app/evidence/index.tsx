@@ -39,9 +39,9 @@ export default function EvidenceScreen() {
 
     const matchF =
       filter === 'All' ||
-      (filter === 'Digital' ? e.type === 'Security Record' : e.type === filter);
+      e.type === filter;
 
-    return matchTitle || matchDesc || matchId || matchLocation && matchF;
+    return (matchTitle || matchDesc || matchId || matchLocation) && matchF;
   });
 
   function renderItem({ item, index }: { item: Evidence; index: number }) {
